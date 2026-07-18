@@ -38,7 +38,8 @@ window.clubData.members = [
   { "name": "EQO | Official", "role": "Участник", "trophies": 43608 }
 ];
 
-window.saveAllDataToFirebase().then(() => {
+window.saveState();
+setTimeout(() => {
     console.log("✅ УРА! Все 30 участников успешно импортированы!");
     window.location.reload();
-});
+}, 1000);
