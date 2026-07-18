@@ -1,8 +1,8 @@
-// Скопируйте весь этот код и вставьте в консоль браузера (F12 -> Console) 
+﻿// Скопируйте весь этот код и вставьте в консоль браузера (F12 -> Console) 
 // на странице нового сайта ПОСЛЕ того как войдете в админку.
 // Он моментально загрузит всех 30 участников в новую базу данных!
 
-window.clubData.info.name = "Dark Brotherhod";
+window.clubData.info.name = "Dark Brotherhood";
 window.clubData.info.tag = "#809L8LRUL";
 window.clubData.info.requiredTrophies = 60000;
 

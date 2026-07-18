@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // 🎮 Brawl Stars Club — Священная Империя | script.js
 // ============================================================
 const SITE_VERSION = "9";
@@ -40,7 +40,7 @@ const STORAGE_KEY = "brawlClubData";
 /** Данные клуба по умолчанию */
 const DEFAULT_CLUB_DATA = {
     info: {
-        name: "Dark Brotherhod",
+        name: "Dark Brotherhood",
         tag: "#809L8LRUL",
         description: "The dark brotherhood | Mini games | Democracy system | details in our chat | language 🇺🇦 and 🇷🇺",
         requiredTrophies: 60000,
@@ -79,7 +79,7 @@ const DEFAULT_CLUB_DATA = {
         { id: "m30", name: "EQO | Official", role: "Участник", trophies: 43608, avatar: "👤" }
     ],
     news: [
-        { id: "1", date: "18.07.2026", title: "🎉 Запуск сайта Dark Brotherhod!", content: "Добро пожаловать на наш новый официальный сайт! Здесь вы найдете всю информацию о клубе, наши правила и достижения." }
+        { id: "1", date: "18.07.2026", title: "🎉 Запуск сайта Dark Brotherhood!", content: "Добро пожаловать на наш новый официальный сайт! Здесь вы найдете всю информацию о клубе, наши правила и достижения." }
     ],
     events: [
         { id: "1", date: "Каждые выходные", title: "Клубная Мегакопилка", desc: "Все билеты должны быть отыграны! За неактивность — кик.", type: "megapig" }
