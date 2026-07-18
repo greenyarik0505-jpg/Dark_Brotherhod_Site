@@ -1,0 +1,668 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dark Brotherhod — официальный сайт клуба Brawl Stars. Информация о клубе, участники, новости, события и многое другое.">
+    <meta name="keywords" content="Brawl Stars, клуб, Dark Brotherhod, Brawl Stars клуб, тропы, участники">
+    <title>Dark Brotherhod — Brawl Stars Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- HEADER -->
+    <!-- ============================================================ -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="logo-icon">⚔️</span>
+                <span class="logo-text">Dark Brotherhod</span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="nav-link active" data-tab="club">Клуб</a></li>
+                    <li><a href="#" class="nav-link" data-tab="members">Участники</a></li>
+                    <li><a href="#" class="nav-link" data-tab="achievements">Зал достижений</a></li>
+                    <li><a href="#" class="nav-link" data-tab="events">События</a></li>
+                    <li><a href="#" class="nav-link" data-tab="rules">Правила</a></li>
+                    <li><a href="#" class="nav-link" data-tab="join">Вступить</a></li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- HERO BANNER -->
+    <!-- ============================================================ -->
+    <section class="hero-banner">
+        <div class="hero-glow"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">⚔️ BRAWL STARS CLUB</div>
+            <h1 class="hero-title">Добро пожаловать,<br>в Dark Brotherhod, путник!</h1>
+            <p class="hero-subtitle">Мы — сплочённая команда, которая играет ради удовольствия и побед. Регулярно участвуем в Мегакопилке и Клубной лиге.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary btn-glow" data-tab="join">🎮 Вступить в клуб</a>
+                <a href="#" class="btn btn-secondary" data-tab="club">📊 О клубе</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================================ -->
+    <main class="main-content">
+
+        <!-- ======================== КЛУБ ======================== -->
+        <section id="club-section" class="content-section tab-content active">
+
+            <!-- Статистика -->
+            <div class="grid-stats" id="clubStats">
+                <!-- Рендерится из JS -->
+            </div>
+
+            <!-- Описание клуба -->
+            <div class="club-info-card card-glow reveal">
+                <h2 id="clubNameDisplay">Dark Brotherhod</h2>
+                <p id="clubDescDisplay">Загрузка описания...</p>
+            </div>
+
+            <!-- Новости + Галерея -->
+            <div class="grid-two-cols">
+                <!-- Новости -->
+                <div class="news-section">
+                    <h3>📰 Последние новости</h3>
+                    <div class="news-list" id="newsList">
+                        <!-- Рендерится из JS -->
+                    </div>
+                </div>
+
+                <!-- Галерея достижений -->
+                <div class="gallery-section">
+                    <h3>🖼️ Галерея достижений</h3>
+                    <div class="gallery-grid" id="galleryGrid">
+                        <!-- Рендерится из JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================== УЧАСТНИКИ ======================== -->
+        <section id="members-section" class="content-section tab-content">
+            <div class="section-header-flex">
+                <h2>👥 Участники клуба</h2>
+                <div class="filter-controls">
+                    <input type="text" id="memberSearch" placeholder="🔍 Поиск по нику..." class="filter-input">
+                    <select id="roleFilter" class="filter-select">
+                        <option value="all">Все роли</option>
+                        <option value="Президент">Президент</option>
+                        <option value="Вице-президент">Вице-президент</option>
+                        <option value="Ветеран">Ветеран</option>
+                        <option value="Участник">Участник</option>
+                    </select>
+                    <select id="sortSelect" class="filter-select">
+                        <option value="trophies-desc">🏆 По трофеям ↓</option>
+                        <option value="trophies-asc">🏆 По трофеям ↑</option>
+                        <option value="name-az">🔤 По имени A-Z</option>
+                    </select>
+                </div>
+            </div>
+            <div class="members-grid" id="membersList">
+                <!-- Рендерится из JS -->
+            </div>
+        </section>
+
+        <!-- ======================== СОБЫТИЯ ======================== -->
+        <section id="events-section" class="content-section tab-content">
+            <h2>📅 Календарь мероприятий</h2>
+            <p class="section-description">Следите за расписанием клубных мероприятий и не пропускайте важные события!</p>
+
+            <div class="calendar-card card-glow">
+                <div class="timeline" id="eventsTimeline">
+                    <!-- Рендерится из JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================== ПРАВИЛА ======================== -->
+        <section id="rules-section" class="content-section tab-content">
+            <h2>📜 Правила клуба</h2>
+            <p class="section-description">Соблюдение правил — залог комфортной игры для всех участников клуба.</p>
+
+            <div class="rules-card card-glow">
+                <h3>🗓️ Правила чата</h3>
+                <div class="rules-list">
+                    <div class="rule-item">
+                        <div class="rule-number">1</div>
+                        <div class="rule-content"><strong>18+ контент:</strong> Любые материалы и сообщения категории 18+ строго запрещены.</div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">2</div>
+                        <div class="rule-content"><strong>Оскорбления:</strong> Серьёзные оскорбления участников и токсичность запрещены.</div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">3</div>
+                        <div class="rule-content"><strong>Спам:</strong> Больше 3 сообщений в минуту (включая стикеры и гифки) без явного смысла запрещены.</div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">4</div>
+                        <div class="rule-content"><strong>Конфиденциальность:</strong> Сливать личную информацию про участников (если они были против) запрещено.</div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">5</div>
+                        <div class="rule-content"><strong>Мир:</strong> Никаких ссор и провокаций в чате. Разногласия решаем мирно.</div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">6</div>
+                        <div class="rule-content"><strong>Символика:</strong> Никакой свастики, экстремизма и австрийского художника (моментальный кик).</div>
+                    </div>
+                </div>
+                <p class="rules-warning">⚠️ За нарушение правил можно получить мут или варн, в крайнем случае бан и кик из клуба. Правила могут изменяться ‼️‼️</p>
+            </div>
+
+            <h3 class="roles-title">⚔️ Роли в клубе</h3>
+            <div class="roles-features-grid">
+                <div class="role-feature-card">
+                    <div class="role-icon">👑</div>
+                    <h3>Президент</h3>
+                    <p>Основатель и глава клуба. Имеет полные права: управление участниками, настройки, роли.</p>
+                </div>
+                <div class="role-feature-card">
+                    <div class="role-icon">🛡️</div>
+                    <h3>Вице-президент</h3>
+                    <p>Помощник президента. Может приглашать, кикать участников и управлять клубными событиями.</p>
+                </div>
+                <div class="role-feature-card">
+                    <div class="role-icon">⭐</div>
+                    <h3>Ветеран</h3>
+                    <p>Опытный и проверенный участник. Может приглашать новых бойцов.</p>
+                </div>
+                <div class="role-feature-card">
+                    <div class="role-icon">🎮</div>
+                    <h3>Участник</h3>
+                    <p>Начальная роль. Играйте активно, помогайте клубу и растите до ветерана!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================== ЗАЛ ДОСТИЖЕНИЙ ======================== -->
+        <section id="achievements-section" class="content-section tab-content">
+            <div class="section-header-flex" style="flex-direction: column; align-items: flex-start; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <h2>🏆 Зал достижений</h2>
+                    <div class="filter-controls ach-main-tabs">
+                        <button class="btn btn-secondary ach-main-tab active" data-main-tab="hall-of-fame">⭐ Зал славы</button>
+                        <button class="btn btn-secondary ach-main-tab" data-main-tab="players">🏅 Достижения игроков</button>
+                    </div>
+                </div>
+                
+                <div class="filter-controls ach-period-tabs" id="achPeriodTabs" style="display: none; width: 100%; padding-bottom: 0.5rem; overflow-x: auto;">
+                    <button class="btn btn-sm btn-secondary ach-period-tab active" data-period="week">📅 За неделю</button>
+                    <button class="btn btn-sm btn-secondary ach-period-tab" data-period="month">🗓️ За месяц</button>
+                    <button class="btn btn-sm btn-secondary ach-period-tab" data-period="year">⏳ За год</button>
+                    <button class="btn btn-sm btn-secondary ach-period-tab" data-period="alltime">♾️ За все время</button>
+                </div>
+            </div>
+
+            <!-- Контейнер для достижений -->
+            <div class="achievements-container" id="achievementsList">
+                <!-- Рендерится из JS -->
+            </div>
+        </section>
+
+        <!-- ======================== ВСТУПИТЬ ======================== -->
+        <section id="join-section" class="content-section tab-content">
+            <div class="join-container">
+                <div class="join-card">
+                    <div class="brawl-badge">⚔️</div>
+                    <h2>Вступить в Клуб</h2>
+
+                    <div class="join-info-grid">
+                        <div class="join-info-box">
+                            <span class="info-box-label">Тег клуба</span>
+                            <div class="tag-copy-wrapper">
+                                <span class="club-tag-val" id="joinClubTag">#2GLJURYPV</span>
+                                <button class="btn btn-sm btn-primary" id="copyTagBtn">📋 Копировать</button>
+                            </div>
+                        </div>
+                        <div class="join-info-box">
+                            <span class="info-box-label">Владелец</span>
+                            <a href="https://t.me/yarik_owner" target="_blank" class="tg-link" id="ownerTgLink">@yarik_owner</a>
+                        </div>
+                        <div class="join-info-box">
+                            <span class="info-box-label">Требуемые трофеи</span>
+                            <span id="joinRequiredTrophies">25 000</span>
+                        </div>
+                    </div>
+
+                    <div class="join-notice">
+                        <p class="join-notice-text">⚠️ Перед вступлением убедитесь, что у вас достаточно трофеев. Найдите наш клуб в игре по тегу или напишите владельцу в Telegram.</p>
+                    </div>
+
+                    <a href="#" class="btn btn-primary btn-full btn-glow" data-tab="club">🔥 Узнать больше о клубе</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================== АДМИН ======================== -->
+        <section id="admin-section" class="content-section tab-content">
+
+            <!-- Страница до авторизации -->
+            <div id="adminLoginSection" class="admin-login-screen">
+                <div class="admin-info-container card card-glow" style="max-width: 480px; width: 100%; text-align: center; margin: 0 auto; padding: var(--space-xl);">
+                    <div style="font-size: 3rem; margin-bottom: var(--space-md);">🛡️</div>
+                    <h2 style="margin-bottom: var(--space-sm);">Административная панель</h2>
+                    <p class="section-description" style="margin-bottom: var(--space-lg);">Панель управления клубом. Вход только для авторизованных администраторов.</p>
+                    <button class="btn btn-primary btn-glow btn-full" id="adminLoginBtn">🔐 Войти в панель</button>
+                </div>
+            </div>
+
+            <!-- Панель после авторизации -->
+            <div id="adminDashboard" style="display: none;">
+                <div class="admin-dashboard-card">
+                    <div class="admin-dash-header">
+                        <h2>🎛️ Панель управления</h2>
+                        <button class="btn btn-danger btn-sm" id="adminLogoutBtn">🚪 Выйти</button>
+                    </div>
+
+                    <!-- Статистика -->
+                    <div class="admin-stats-row" id="adminStatsRow">
+                        <!-- Рендерится из JS -->
+                    </div>
+
+                    <!-- Вкладки управления -->
+                    <div class="filter-controls admin-tab-controls">
+                        <button class="btn btn-sm btn-secondary admin-tab-btn active" data-admin-tab="settings">⚙️ Настройки</button>
+                        <button class="btn btn-sm btn-secondary admin-tab-btn" data-admin-tab="news">📰 Новости</button>
+                        <button class="btn btn-sm btn-secondary admin-tab-btn" data-admin-tab="members">👥 Участники</button>
+                        <button class="btn btn-sm btn-secondary admin-tab-btn" data-admin-tab="events">📅 События</button>
+                        <button class="btn btn-sm btn-secondary admin-tab-btn" data-admin-tab="gallery">🖼️ Галерея</button>
+                        <button class="btn btn-sm btn-secondary admin-tab-btn" data-admin-tab="achievements">🏆 Достижения</button>
+                    </div>
+
+                    <div class="admin-content-layout">
+
+                        <!-- Настройки клуба -->
+                        <div class="admin-subcard admin-sub-section active" id="admin-settings-section">
+                            <h3>⚙️ Настройки клуба</h3>
+                            <form id="clubSettingsForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="settingName">Название клуба</label>
+                                        <input type="text" id="settingName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="settingTag">Тег клуба</label>
+                                        <input type="text" id="settingTag" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="settingTrophies">Требуемые трофеи</label>
+                                        <input type="number" id="settingTrophies" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="settingTelegram">Telegram владельца</label>
+                                        <input type="text" id="settingTelegram">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settingDescription">Описание клуба</label>
+                                    <textarea id="settingDescription" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">💾 Сохранить настройки</button>
+                            </form>
+                        </div>
+
+                        <!-- Управление новостями -->
+                        <div class="admin-subcard admin-sub-section" id="admin-news-section" style="display: none;">
+                            <div class="subcard-header-flex">
+                                <h3>📰 Новости</h3>
+                                <button class="btn btn-sm btn-primary" id="addNewsBtn">+ Добавить</button>
+                            </div>
+                            <div class="admin-table-wrapper">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Заголовок</th>
+                                            <th>Дата</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminNewsBody">
+                                        <!-- Рендерится из JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Управление участниками -->
+                        <div class="admin-subcard admin-sub-section" id="admin-members-section" style="display: none;">
+                            <div class="subcard-header-flex">
+                                <h3>👥 Участники</h3>
+                                <button class="btn btn-sm btn-primary" id="addMemberBtn">+ Добавить</button>
+                            </div>
+                            <div class="admin-table-wrapper">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>🎭</th>
+                                            <th>Ник</th>
+                                            <th>Роль</th>
+                                            <th>🏆</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminMembersBody">
+                                        <!-- Рендерится из JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Управление событиями -->
+                        <div class="admin-subcard admin-sub-section" id="admin-events-section" style="display: none;">
+                            <div class="subcard-header-flex">
+                                <h3>📅 События</h3>
+                                <button class="btn btn-sm btn-primary" id="addEventBtn">+ Добавить</button>
+                            </div>
+                            <div class="admin-table-wrapper">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Дата</th>
+                                            <th>Название</th>
+                                            <th>Тип</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminEventsBody">
+                                        <!-- Рендерится из JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Управление галереей -->
+                        <div class="admin-subcard admin-sub-section" id="admin-gallery-section" style="display: none;">
+                            <div class="subcard-header-flex">
+                                <h3>🖼️ Галерея</h3>
+                                <button class="btn btn-sm btn-primary" id="addGalleryBtn">+ Добавить фото</button>
+                            </div>
+                            <div class="admin-table-wrapper">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Превью</th>
+                                            <th>Описание</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminGalleryBody">
+                                        <!-- Рендерится из JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Управление залом достижений -->
+                        <div class="admin-subcard admin-sub-section" id="admin-achievements-section" style="display: none;">
+                            <div class="subcard-header-flex">
+                                <h3>🏆 Достижения клуба</h3>
+                                <button class="btn btn-sm btn-primary" id="addAchievementBtn">+ Добавить</button>
+                            </div>
+                            <div class="admin-table-wrapper">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Тип</th>
+                                            <th>Период</th>
+                                            <th>Игрок(и)</th>
+                                            <th>Значение</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminAchievementsBody">
+                                        <!-- Рендерится из JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Dark Brotherhod — Клуб Brawl Stars. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- МОДАЛКИ -->
+    <!-- ============================================================ -->
+
+    <div class="modal" id="adminLoginModal">
+        <div class="modal-content">
+            <button class="modal-close" id="adminLoginClose">✕</button>
+            <h3 class="modal-header">🔐 Вход в панель управления</h3>
+            <div class="form-group">
+                <label for="adminEmailInput">Логин</label>
+                <input type="text" id="adminEmailInput" placeholder="Введите логин...">
+            </div>
+            <div class="form-group">
+                <label for="adminPasswordInput">Пароль</label>
+                <div style="position: relative;">
+                    <input type="password" id="adminPasswordInput" placeholder="Введите пароль..." style="padding-right: 70px;">
+                    <button type="button" id="togglePasswordBtn" class="toggle-password-btn" title="Показать/Скрыть пароль">Показать</button>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-full" id="adminLoginSubmit">Войти</button>
+        </div>
+    </div>
+
+    <!-- Модалка Подтверждения (Удаления) -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <h3 class="modal-header">Подтверждение</h3>
+            <p id="confirmMessage" style="margin-bottom: var(--space-lg); color: var(--text-main);"></p>
+            <div style="display: flex; gap: var(--space-md); justify-content: center;">
+                <button class="btn btn-secondary" id="confirmNo" style="flex: 1;">Отмена</button>
+                <button class="btn btn-danger" id="confirmYes" style="flex: 1;">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалка новости -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 class="modal-header" id="newsModalTitle">Добавить новость</h3>
+            <input type="hidden" id="newsEditId">
+            <div class="form-group">
+                <label for="newsTitle">Заголовок</label>
+                <input type="text" id="newsTitle" placeholder="Введите заголовок новости...">
+            </div>
+            <div class="form-group">
+                <label for="newsContent">Содержание</label>
+                <textarea id="newsContent" rows="4" placeholder="Текст новости..."></textarea>
+            </div>
+            <button class="btn btn-primary btn-full" id="saveNewsBtn">💾 Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Модалка участника -->
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 class="modal-header" id="memberModalTitle">Добавить участника</h3>
+            <input type="hidden" id="memberEditId">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="memberName">Ник</label>
+                    <input type="text" id="memberName" placeholder="Игровой ник...">
+                </div>
+                <div class="form-group">
+                    <label for="memberAvatar">Эмодзи-аватар</label>
+                    <input type="text" id="memberAvatar" placeholder="👤" maxlength="4">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="memberRole">Роль</label>
+                    <select id="memberRole">
+                        <option value="Участник">Участник</option>
+                        <option value="Ветеран">Ветеран</option>
+                        <option value="Вице-президент">Вице-президент</option>
+                        <option value="Президент">Президент</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="memberTrophies">Трофеи</label>
+                    <input type="number" id="memberTrophies" placeholder="0">
+                </div>
+            </div>
+            <button class="btn btn-primary btn-full" id="saveMemberBtn">💾 Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Модалка события -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 class="modal-header" id="eventModalTitle">Добавить событие</h3>
+            <input type="hidden" id="eventEditId">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="eventDate">Дата</label>
+                    <input type="text" id="eventDate" placeholder="Напр.: 24 Июля 2026">
+                </div>
+                <div class="form-group">
+                    <label for="eventType">Тип</label>
+                    <select id="eventType">
+                        <option value="megapig">🐷 Мегакопилка</option>
+                        <option value="tournament">⚔️ Турнир</option>
+                        <option value="cleanup">🧹 Очистка</option>
+                        <option value="friendly">🤝 Дружеский матч</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eventTitle">Название</label>
+                <input type="text" id="eventTitle" placeholder="Название события...">
+            </div>
+            <div class="form-group">
+                <label for="eventDesc">Описание</label>
+                <textarea id="eventDesc" rows="3" placeholder="Описание события..."></textarea>
+            </div>
+            <button class="btn btn-primary btn-full" id="saveEventBtn">💾 Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Модалка галереи -->
+    <div class="modal" id="galleryModal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 class="modal-header" id="galleryModalTitle">Добавить фото</h3>
+            <input type="hidden" id="galleryEditId">
+            <input type="hidden" id="galleryUrl">
+
+            <!-- Зона загрузки фото -->
+            <div class="upload-zone" id="galleryUploadZone">
+                <input type="file" id="galleryFileInput" accept="image/*" style="display:none">
+                <div class="upload-zone-inner" id="galleryUploadInner">
+                    <div class="upload-icon">🖼️</div>
+                    <p class="upload-label">Нажми или перетащи фото сюда</p>
+                    <p class="upload-hint">JPG, PNG, WEBP — до 10 МБ</p>
+                </div>
+            </div>
+
+            <div class="gallery-preview-container" id="galleryPreviewContainer" style="display: none;">
+                <img id="galleryPreviewImg" src="" alt="Превью">
+                <button class="btn btn-sm btn-secondary" id="galleryChangePhotoBtn" style="margin-top:0.5rem;width:100%">📁 Выбрать другое фото</button>
+            </div>
+
+            <div class="form-group" style="margin-top:1rem">
+                <label for="galleryCaption">Подпись (описание)</label>
+                <input type="text" id="galleryCaption" placeholder="Напр.: Победа в Клубной Лиге">
+            </div>
+            <button class="btn btn-primary btn-full" id="saveGalleryBtn">💾 Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Модалка достижений -->
+    <div class="modal" id="achievementModal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 class="modal-header" id="achievementModalTitle">Добавить достижение</h3>
+            <input type="hidden" id="achievementEditId">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="achType">Тип достижения</label>
+                    <select id="achType">
+                        <option value="wins3v3">⚔️ Победы 3 на 3</option>
+                        <option value="winsSd">☠️ Победы в ШД (Соло/Дуо)</option>
+                        <option value="ranked">🏆 Ранкед рекорд (Мастер/Легенда)</option>
+                        <option value="fame">🌟 Зал славы (Прайм, про-ранг и др.)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="achPeriod">Период</label>
+                    <select id="achPeriod">
+                        <option value="week">📅 Неделя</option>
+                        <option value="month">🗓️ Месяц</option>
+                        <option value="year">⏳ Год</option>
+                        <option value="alltime">♾️ Все время</option>
+                        <option value="hall-of-fame">⭐ Зал славы (всегда)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="achPlayers">Ник(и) игрока(ов)</label>
+                <input type="text" id="achPlayers" placeholder="Напр.: ✨Cesuis✨, Zharik🔥">
+            </div>
+            <div class="form-group">
+                <label for="achValue">Значение / Рекорд / Ранг</label>
+                <input type="text" id="achValue" placeholder="Напр.: 15,200 побед или Мастер 3 Прайм">
+            </div>
+            <button class="btn btn-primary btn-full" id="saveAchievementBtn">💾 Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Модалка просмотра фото (lightbox) -->
+    <div class="modal lightbox-modal" id="lightboxModal">
+        <div class="lightbox-content">
+            <button class="modal-close lightbox-close">✕</button>
+            <img id="lightboxImg" src="" alt="Просмотр">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (v10 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    
+    <script src="./config.js" onerror="console.warn('config.js dynamic load skipped (will use default or environment provided secrets).')"></script>
+    <script src="script.js?v=9"></script>
+</body>
+</html>

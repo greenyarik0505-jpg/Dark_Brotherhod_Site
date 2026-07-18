@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brawl Stars: Dark Brotherhod - Презентация</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Russo+One&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gold: #FFD700;
+            --primary-blue: #00E5FF;
+            --dark-bg: #000000;
+            --accent-red: #FF3366;
+        }
+
+        body, .reveal {
+            background: var(--dark-bg);
+            background-color: var(--dark-bg) !important;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* 100% Responsive Slides */
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            transform: none !important; /* Disable any leftover scaling */
+            left: 0 !important;
+            top: 0 !important;
+            margin: 0 !important;
+        }
+
+        .reveal .slides > section {
+            width: 100% !important;
+            height: 100% !important;
+            padding: 5% !important;
+            box-sizing: border-box !important;
+            overflow-y: auto !important; /* Enable scrolling if content is too tall on mobile */
+            background-color: transparent !important;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .reveal .slides section.center-slide {
+            text-align: center;
+            align-items: center;
+        }
+
+        #particles-js {
+            position: absolute; width: 100%; height: 100%;
+            top: 0; left: 0; z-index: 0; pointer-events: none;
+        }
+        .reveal { 
+            z-index: 1; 
+            --r-controls-color: #FFFFFF !important; /* Белые стрелки */
+        }
+        
+        .reveal .controls button {
+            color: #FFFFFF !important;
+            opacity: 0.8 !important;
+            transform: scale(1.5) !important; /* Делаем стрелки в 1.5 раза крупнее */
+        }
+        .reveal .controls button:hover {
+            opacity: 1 !important;
+        }
+
+        /* Typography - Base values for PC */
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Russo One', sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0,0,0,1);
+            margin-bottom: 20px;
+        }
+        .reveal h1 { font-size: 3.5rem; letter-spacing: 2px; }
+        .reveal h2 { font-size: 2.5rem; color: var(--primary-gold); }
+        .reveal h3 { font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 15px; }
+        
+        .reveal p, .reveal li {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 1.2rem; /* Perfect readable size */
+            color: #E2E8F0;
+            line-height: 1.6;
+        }
+
+        .text-gold { color: var(--primary-gold) !important; }
+        .text-blue { color: var(--primary-blue) !important; }
+        .text-red { color: var(--accent-red) !important; }
+
+        .glass-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .browser-mockup {
+            border-radius: 15px;
+            border: 2px solid #333;
+            background: #000;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .browser-mockup iframe { flex-grow: 1; border: none; width: 100%; height: 100%; }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            border-radius: 30px;
+            border: 10px solid #222;
+            background: #000;
+            margin: 0 auto;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .phone-mockup iframe { width: 100%; height: 100%; border-radius: 20px; border: none; }
+
+        .floating { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Truly Responsive Mobile Media Query */
+        @media (max-width: 768px) {
+            .reveal .slides > section {
+                padding: 20px !important;
+                justify-content: flex-start; /* Prevent vertical centering crunch */
+            }
+            .grid-2 { grid-template-columns: 1fr; gap: 15px; }
+            .reveal h1 { font-size: 2.5rem; }
+            .reveal h2 { font-size: 1.8rem; }
+            .reveal p, .reveal li { font-size: 1.1rem; } /* Slightly larger for mobile readability! */
+            
+            .phone-mockup { width: 100%; max-width: 300px; height: 70vh; min-height: 400px; }
+            .browser-mockup { height: auto; min-height: 0; }
+            
+            .glass-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- 1 -->
+            <section class="center-slide">
+                <div class="floating" style="margin-bottom: 20px;">
+                    <div style="font-size: 6rem; text-shadow: 0 0 30px #FFD700;">👑</div>
+                </div>
+                <h1>Dark Brotherhod</h1>
+                <p style="color: var(--primary-blue); font-weight: 900; letter-spacing: 2px;">ОФИЦИАЛЬНЫЙ САЙТ КЛУБА</p>
+                <p style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 30px;">Используйте стрелки или свайп для переключения</p>
+            </section>
+
+            <!-- 2 -->
+            <section>
+                <h2>Зачем нам <span class="text-gold">сайт?</span></h2>
+                <div class="glass-card">
+                    <p>Telegram-чаты и игровые переписки забиваются спамом, важные сообщения теряются, а новые участники не могут найти правила.</p>
+                </div>
+                <div class="glass-card">
+                    <ul style="margin-left: 20px;">
+                        <li><span class="text-blue">Престиж:</span> Свой сайт выделяет нас среди десятков тысяч других клубов.</li>
+                        <li><span class="text-blue">Единая База:</span> Все новости, анонсы турниров и правила всегда доступны по одной ссылке.</li>
+                        <li><span class="text-blue">Мотивация:</span> Достижения и кубки публикуются в Зале Славы.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 3 -->
+            <section>
+                <h2>Функционал <span class="text-gold">Часть 1</span></h2>
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-users text-gold"></i> База Участников</h3>
+                        <p>Интеллектуальный список игроков. Мгновенная сортировка по кубкам и фильтрация по ролям. Каждый знает своё место в иерархии.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-newspaper text-blue"></i> Новостная Лента</h3>
+                        <p>Полноценный блог клуба. Итоги Лиги Клубов, важные объявления от руководства и изменения в правилах.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4 -->
+            <section>
+                <h2>Функционал <span class="text-gold">Часть 2</span></h2>
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-calendar-alt text-red"></i> События</h3>
+                        <p>Таймлайн предстоящих турниров, начала мегакопилки и дней чистки неактивных игроков.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-trophy" style="color: #b052ff;"></i> Рекорды</h3>
+                        <p>Галерея с лучшими моментами, легендарными победами и рекордами, которые вписаны в историю клуба.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5 -->
+            <section class="center-slide">
+                <h2><i class="fas fa-desktop"></i> ПК Версия</h2>
+                <p>Вы можете скроллить и нажимать меню прямо здесь! 👇</p>
+                <div class="browser-mockup">
+                    <iframe data-src="index.html"></iframe>
+                </div>
+            </section>
+
+            <!-- 6 -->
+            <section>
+                <h2><i class="fas fa-mobile-alt text-blue"></i> Mobile First</h2>
+                <p style="margin-bottom: 20px;">Сайт идеально подстраивается под телефоны. Кликните на иконку ☰ в правом верхнем углу меню, чтобы открыть навигацию!</p>
+                <div class="phone-mockup floating">
+                    <iframe data-src="index.html"></iframe>
+                </div>
+            </section>
+
+            <!-- 7 -->
+            <section>
+                <h2>Админ-<span class="text-red">Панель</span> (Часть 1)</h2>
+                <div class="glass-card">
+                    <p>Полное управление сайтом прямо из браузера или с телефона. Никакого кода, всё делается в два клика!</p>
+                </div>
+                <div class="grid-2">
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h3 class="text-blue"><i class="fas fa-edit"></i> Новости и Галерея</h3>
+                        <p style="font-size: 0.9em;">Мгновенная публикация постов. Можно прикреплять картинки, видео или ссылки. А также добавлять новые рекорды клуба в Галерею славы.</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h3 class="text-gold"><i class="fas fa-users-cog"></i> База Игроков</h3>
+                        <p style="font-size: 0.9em;">Быстрое добавление новичков, обновление количества кубков, изменение ролей (Ветеран, Вице-президент) и удаление кикнутых.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7.5 -->
+            <section>
+                <h2>Админ-<span class="text-red">Панель</span> (Часть 2)</h2>
+                <div class="glass-card">
+                    <p>Админка абсолютно безопасна и скрыта от обычных посетителей сайта.</p>
+                </div>
+                <div class="grid-2">
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h3 class="text-blue"><i class="fas fa-lock"></i> Авторизация</h3>
+                        <p style="font-size: 0.9em;">Доступ есть только у руководства. Нужно знать специальный логин и пароль. Без них невозможно ничего удалить или сломать.</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h3 class="text-gold"><i class="fas fa-bolt"></i> Мгновенность</h3>
+                        <p style="font-size: 0.9em;">Как только вы нажимаете кнопку "Сохранить", изменения моментально появляются у всех участников, которые сейчас сидят на сайте.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8 -->
+            <section>
+                <h2><i class="fas fa-microchip text-gold"></i> Технологии под капотом</h2>
+                <div class="glass-card">
+                    <p>Сайт построен на передовых и надежных решениях, гарантирующих бесперебойную работу 24/7 под любыми нагрузками.</p>
+                </div>
+                
+                <ul style="margin-top: 30px; margin-left: 20px; line-height: 2;">
+                    <li><span class="text-blue" style="font-weight: 900;">Google Firebase (Realtime DB):</span> Облачная база данных от Google. Защита от потерь и мгновенная загрузка за миллисекунды.</li>
+                    <li><span class="text-blue" style="font-weight: 900;">GitHub Pages:</span> Элитный хостинг для статических сайтов. Гарантирует, что сайт никогда не "упадёт" даже при тысячах посетителей.</li>
+                    <li><span class="text-blue" style="font-weight: 900;">Glassmorphism UI:</span> Современный дизайн с эффектом матового стекла, который используется в интерфейсах Apple и Windows 11.</li>
+                </ul>
+            </section>
+
+            <!-- 10 -->
+            <section class="center-slide">
+                <div class="brawl-icon floating" style="font-size: 5rem;">👑</div>
+                <h1 class="text-gold" style="font-size: 3.5rem;">САЙТ ГОТОВ</h1>
+                <p style="font-size: 1.5rem; margin-bottom: 30px;">Можно приглашать участников!</p>
+                <a href="index.html" style="display: inline-block; background: var(--primary-gold); color: #000; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 1.2rem;">
+                    ПЕРЕЙТИ НА САЙТ
+                </a>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            controlsLayout: 'edges', // Располагаем стрелки по бокам экрана!
+            controlsBackArrows: 'visible', // Принудительно показывать стрелку "назад"
+            progress: true,
+            center: false,
+            transition: 'slide', 
+            backgroundTransition: 'fade',
+            width: "100%",  // Fully responsive 100% width
+            height: "100%", // Fully responsive 100% height
+            margin: 0,
+            minScale: 1, // Disable auto-scaling
+            maxScale: 1  // Disable auto-scaling
+        });
+
+        // Click on background advances slide
+        document.body.addEventListener('click', function(e) {
+            // Игнорируем клики по ссылкам, кнопкам, iframe и самим макетам
+            if (e.target.closest('.controls') || 
+                e.target.closest('a') || 
+                e.target.closest('.browser-mockup') || 
+                e.target.closest('.phone-mockup') || 
+                e.target.tagName === 'IFRAME') {
+                return;
+            }
+            Reveal.next();
+        });
+
+        // Настоящее кроссбраузерное масштабирование ПК-версии
+        function fixDesktopMockup() {
+            const browserMockup = document.querySelector('.browser-mockup');
+            if (!browserMockup) return;
+            const iframe = browserMockup.querySelector('iframe');
+            
+            if (window.innerWidth <= 768) {
+                const targetWidth = 1280;
+                const targetHeight = 800; // фиксированная высота для ПК
+                // Ширина экрана минус отступы по краям
+                const availableWidth = window.innerWidth - 40; 
+                const scale = availableWidth / targetWidth;
+                
+                iframe.style.width = targetWidth + 'px';
+                iframe.style.height = targetHeight + 'px';
+                iframe.style.transform = `scale(${scale})`;
+                iframe.style.transformOrigin = '0 0';
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                
+                // Подгоняем высоту самого макета, чтобы не было черных дыр
+                browserMockup.style.height = (targetHeight * scale) + 'px';
+            } else {
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.transform = 'none';
+                iframe.style.position = 'static';
+                browserMockup.style.height = '60vh';
+            }
+        }
+        
+        window.addEventListener('resize', fixDesktopMockup);
+        fixDesktopMockup(); // Вызываем сразу
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 40 },
+                "color": { "value": ["#FFD700", "#ffffff"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1, "direction": "top", "out_mode": "out" }
+            },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": true, "mode": "push" } } },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
