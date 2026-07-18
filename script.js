@@ -40,73 +40,53 @@ const STORAGE_KEY = "brawlClubData";
 /** Данные клуба по умолчанию */
 const DEFAULT_CLUB_DATA = {
     info: {
-        name: "Holy Empire",
-        tag: "#2QCLRR800",
-        description: "Священная империя ждёт воинов. Склонись и сразись! Неактив 3 дня — кик. Отыгровка копилки обязательна. 🇷🇺",
+        name: "Dark Brotherhod",
+        tag: "#809L8LRUL",
+        description: "The dark brotherhood | Mini games | Democracy system | details in our chat | language 🇺🇦 and 🇷🇺",
         requiredTrophies: 60000,
         ownerTelegram: "@yarik_owner"
     },
     members: [
-        { id: "m1", name: "farel", role: "Ветеран", trophies: 175013, avatar: "⭐" },
-        { id: "m2", name: "Code: Zharik🔥", role: "Вице-президент", trophies: 110234, avatar: "🦎" },
-        { id: "m3", name: "✨Cezuis✨", role: "Президент", trophies: 107576, avatar: "👑" },
-        { id: "m4", name: "⚔️| MAGIM |⚔️", role: "Участник", trophies: 102162, avatar: "🌵" },
-        { id: "m5", name: "BiBr1k", role: "Вице-президент", trophies: 87342, avatar: "🔥" },
-        { id: "m6", name: "kęŗbąx❄️", role: "Участник", trophies: 87246, avatar: "⛄" },
-        { id: "m7", name: "Loader", role: "Участник", trophies: 80847, avatar: "👤" },
-        { id: "m8", name: "УМБИЦА", role: "Ветеран", trophies: 77145, avatar: "⭐" },
-        { id: "m9", name: "👿Sa{Y}ReX👿", role: "Участник", trophies: 74320, avatar: "👤" },
-        { id: "m10", name: "KVD | Deathgan", role: "Участник", trophies: 71759, avatar: "👤" },
-        { id: "m11", name: "☃️Vęņģuś☃️", role: "Участник", trophies: 68629, avatar: "👤" },
-        { id: "m12", name: "САХАРOК", role: "Ветеран", trophies: 68111, avatar: "👤" },
-        { id: "m13", name: "Lemon_h1k", role: "Участник", trophies: 67734, avatar: "👤" },
-        { id: "m14", name: "senyakrud", role: "Вице-президент", trophies: 66828, avatar: "👑" },
-        { id: "m15", name: "KVD | Gladiator", role: "Участник", trophies: 63368, avatar: "👤" },
-        { id: "m16", name: "DreamTournament", role: "Участник", trophies: 62917, avatar: "👤" },
-        { id: "m17", name: "[]{}#%^*+=\\_|~<", role: "Ветеран", trophies: 60609, avatar: "👤" },
-        { id: "m18", name: "Code: Saharok", role: "Участник", trophies: 60049, avatar: "👤" },
-        { id: "m19", name: "KOT9", role: "Ветеран", trophies: 59668, avatar: "👤" },
-        { id: "m20", name: "Андрій🙏Skill", role: "Участник", trophies: 58394, avatar: "👤" },
-        { id: "m21", name: "god, bless Zo.", role: "Участник", trophies: 56145, avatar: "👤" },
-        { id: "m22", name: "Ash | AuraBS🗿", role: "Участник", trophies: 51473, avatar: "👤" },
-        { id: "m23", name: "килья", role: "Ветеран", trophies: 51316, avatar: "👤" },
-        { id: "m24", name: "Ti Ne Top🤡", role: "Ветеран", trophies: 50869, avatar: "👤" },
-        { id: "m25", name: "SometG", role: "Ветеран", trophies: 50822, avatar: "👤" },
-        { id: "m26", name: "умник prime", role: "Участник", trophies: 50819, avatar: "👤" },
-        { id: "m27", name: "Toose", role: "Ветеран", trophies: 47694, avatar: "👤" },
-        { id: "m28", name: "『fg|HiRo』", role: "Участник", trophies: 45893, avatar: "👤" },
-        { id: "m29", name: "DED", role: "Участник", trophies: 45678, avatar: "👤" },
-        { id: "m30", name: "Sword", role: "Участник", trophies: 42550, avatar: "👤" }
+        { id: "m1", name: "Яросний хом'як", role: "Президент", trophies: 128762, avatar: "👑" },
+        { id: "m2", name: "денька 🖤 prime 💪", role: "Вице-президент", trophies: 112737, avatar: "🔥" },
+        { id: "m3", name: "лакки ✌️ яйцами 💀", role: "Вице-президент", trophies: 102126, avatar: "🔥" },
+        { id: "m4", name: "qvatro", role: "Участник", trophies: 95908, avatar: "👤" },
+        { id: "m5", name: "Mister Bisnes", role: "Участник", trophies: 93746, avatar: "👤" },
+        { id: "m6", name: "††JOKER††", role: "Участник", trophies: 84934, avatar: "👤" },
+        { id: "m7", name: "INVI Yarik0505", role: "Участник", trophies: 84500, avatar: "👤" },
+        { id: "m8", name: "привет пупс", role: "Участник", trophies: 83234, avatar: "👤" },
+        { id: "m9", name: "Mortyaga 67", role: "Ветеран", trophies: 75877, avatar: "⭐" },
+        { id: "m10", name: "gg. | mondarin", role: "Участник", trophies: 71810, avatar: "👤" },
+        { id: "m11", name: "haz ❤️ hyra", role: "Участник", trophies: 71752, avatar: "👤" },
+        { id: "m12", name: "BabI kwas", role: "Участник", trophies: 70336, avatar: "👤" },
+        { id: "m13", name: "selderey", role: "Участник", trophies: 69290, avatar: "👤" },
+        { id: "m14", name: "@reider_ ®️™️", role: "Вице-президент", trophies: 68485, avatar: "🔥" },
+        { id: "m15", name: "† | ᎪᎷ•TOXIC 々 ☥ ₹", role: "Участник", trophies: 66826, avatar: "👤" },
+        { id: "m16", name: "👾 ₩ •One Piece• ₩", role: "Участник", trophies: 66340, avatar: "👤" },
+        { id: "m17", name: "wQh | Rowoys157", role: "Ветеран", trophies: 65560, avatar: "⭐" },
+        { id: "m18", name: "Born to | play 🥵", role: "Участник", trophies: 64027, avatar: "👤" },
+        { id: "m19", name: "⚡️ZERO⚡️", role: "Участник", trophies: 62234, avatar: "👤" },
+        { id: "m20", name: "FUT | Feliks", role: "Участник", trophies: 61551, avatar: "👤" },
+        { id: "m21", name: "суфіk 🌀🌪", role: "Участник", trophies: 59697, avatar: "👤" },
+        { id: "m22", name: "YT_MORTIS_SK", role: "Участник", trophies: 58806, avatar: "👤" },
+        { id: "m23", name: "Piskri", role: "Ветеран", trophies: 57116, avatar: "⭐" },
+        { id: "m24", name: "‼️ Водолаз ‼️", role: "Участник", trophies: 55986, avatar: "👤" },
+        { id: "m25", name: "🪐 TH | MANS_KZ", role: "Ветеран", trophies: 55899, avatar: "⭐" },
+        { id: "m26", name: "okyrok", role: "Участник", trophies: 55081, avatar: "👤" },
+        { id: "m27", name: "Artem", role: "Участник", trophies: 53617, avatar: "👤" },
+        { id: "m28", name: "MR. mi$tic.RUS", role: "Участник", trophies: 51481, avatar: "👤" },
+        { id: "m29", name: "🔥 FenoxRuss 🔥", role: "Участник", trophies: 48960, avatar: "👤" },
+        { id: "m30", name: "EQO | Official", role: "Участник", trophies: 43608, avatar: "👤" }
     ],
     news: [
-        { id: "1", date: "15.07.2026", title: "🎉 Мегакопилка заполнена!", content: "Поздравляем всех бойцов! Мы полностью заполнили Мегакопилку и забрали максимальные награды. Всем огромное спасибо за активное участие! Так держать!" },
-        { id: "2", date: "10.07.2026", title: "📢 Новые критерии вступления", content: "В связи с ростом среднего уровня участников, порог кубков для вступления повышен до 60,000 трофеев. Не сбавляем темп, империя растёт!" },
-        { id: "3", date: "05.07.2026", title: "🏆 Победа в Клубной Лиге!", content: "Наш клуб занял 1 место в Клубной Лиге сезона! Особая благодарность всем участникам за слаженную игру. Награды уже начислены." }
+        { id: "1", date: "18.07.2026", title: "🎉 Запуск сайта Dark Brotherhod!", content: "Добро пожаловать на наш новый официальный сайт! Здесь вы найдете всю информацию о клубе, наши правила и достижения." }
     ],
     events: [
-        { id: "1", date: "24 Июля 2026", title: "Клубная Мегакопилка", desc: "Главный ивент месяца. Все билеты должны быть отыграны! За неактивность — исключение.", type: "megapig" },
-        { id: "2", date: "28 Июля 2026", title: "Внутриклановый турнир 3х3", desc: "Турнир по Brawl Ball среди участников клуба. Собирайте команды, призовой фонд — Brawl Pass Plus!", type: "tournament" },
-        { id: "3", date: "1 Августа 2026", title: "Очистка неактивных", desc: "Ежемесячная проверка логов активности. Игроки, не заходившие в игру более 3 дней без предупреждения, будут кикнуты.", type: "cleanup" },
-        { id: "4", date: "5 Августа 2026", title: "Дружеский матч с Легионом", desc: "Товарищеская встреча с дружественным клубом «Легион Огня». 5v5, режим — Осада.", type: "friendly" }
+        { id: "1", date: "Каждые выходные", title: "Клубная Мегакопилка", desc: "Все билеты должны быть отыграны! За неактивность — кик.", type: "megapig" }
     ],
-    gallery: [
-        { id: "g1", url: "https://cdn.supercell.com/supercell.com/images/posts/brawl-stars/19c7e69b69/1024x0/Header.webp", caption: "Победа в Клубной Лиге — Сезон 1" },
-        { id: "g2", url: "https://cdn.supercell.com/supercell.com/images/posts/brawl-stars/aa2e1fca6b/1024x0/Header.webp", caption: "Мегакопилка заполнена на 100%" },
-        { id: "g3", url: "https://cdn.supercell.com/supercell.com/images/posts/brawl-stars/1f66c14bb6/1024x0/Header.webp", caption: "Турнир 3х3 — Наша команда чемпионов" },
-        { id: "g4", url: "https://cdn.supercell.com/supercell.com/images/posts/brawl-stars/b5ce4b9f33/1024x0/Header.webp", caption: "62 000 трофеев — Рекорд президента" }
-    ],
+    gallery: [],
     achievements: [
-        // Зал Славы
-        { id: "hof_prime3", type: "fame", period: "hall-of-fame", players: "✨Cesuis✨", value: "3 Прайм" },
-        { id: "hof_prime4", type: "fame", period: "hall-of-fame", players: "Zharik🔥", value: "4 Прайм" },
-        { id: "hof_prime5", type: "fame", period: "hall-of-fame", players: "BiBr1k", value: "5 Прайм" },
-        { id: "hof_master", type: "ranked", period: "hall-of-fame", players: "farel", value: "Мастер" },
-        { id: "hof_pro", type: "ranked", period: "hall-of-fame", players: "senyakrud", value: "Про Ранг" },
-        
-        // Достижения игроков
-        { id: "ach3", type: "wins3v3", period: "week", players: "ęŗbąx❄️", value: "350 побед" },
-        { id: "ach4", type: "winsSd", period: "month", players: "⚔️| MAGIM |⚔️", value: "85 побед в ШД" },
-        { id: "ach5", type: "wins3v3", period: "year", players: "senyakrud", value: "4,500 побед" }
+        { id: "hof_prime1", type: "ranked", period: "hall-of-fame", players: "Яросний хом'як", value: "Мастер" }
     ]
 };
 
