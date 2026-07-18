@@ -2,8 +2,9 @@
 // на странице нового сайта ПОСЛЕ того как войдете в админку.
 // Он моментально загрузит всех 30 участников в новую базу данных!
 
-window.clubData.clubInfo.tag = "#809L8LRUL";
-window.clubData.clubInfo.requiredTrophies = 60000;
+window.clubData.info.name = "Dark Brotherhod";
+window.clubData.info.tag = "#809L8LRUL";
+window.clubData.info.requiredTrophies = 60000;
 
 window.clubData.members = [
   { "name": "Яросний хом'як", "role": "Президент", "trophies": 128762 },
