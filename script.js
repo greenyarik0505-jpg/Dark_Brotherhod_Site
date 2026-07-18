@@ -123,14 +123,14 @@ let isAdminAuthenticated = false;
  * Загрузка состояния (Firebase Realtime Database или LocalStorage)
  */
 const firebaseConfig = {
-    apiKey: "AIzaSyDzvGVlyssX3t-ZZJzmdydaiY-nBKBou7c",
-    authDomain: "brawlclub-432dd.firebaseapp.com",
-    databaseURL: "https://brawlclub-432dd-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "brawlclub-432dd",
-    storageBucket: "brawlclub-432dd.firebasestorage.app",
-    messagingSenderId: "376631376135",
-    appId: "1:376631376135:web:c7ac383642efb74fcc6da2",
-    measurementId: "G-CR4WP0T0J8"
+    apiKey: "AIzaSyCh14CMKFKwVqtEz6s9mSxKyMmxoEFscFc",
+    authDomain: "dark-club-57e07.firebaseapp.com",
+    databaseURL: "https://dark-club-57e07-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "dark-club-57e07",
+    storageBucket: "dark-club-57e07.firebasestorage.app",
+    messagingSenderId: "732975006109",
+    appId: "1:732975006109:web:e9e98e05baf73fe5e9ef74",
+    measurementId: "G-CYCH36MMEW"
 };
 
 let firebaseDb = null;
