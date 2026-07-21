@@ -145,11 +145,6 @@ def make_context_menu(widget):
         menu.tk_popup(event.x_root, event.y_root)
         
     widget.bind("<Button-3>", show_menu)
-    # Fix for Russian layout Ctrl+V / Ctrl+C
-    widget.bind("<Control-м>", lambda e: widget.event_generate("<<Paste>>"))
-    widget.bind("<Control-М>", lambda e: widget.event_generate("<<Paste>>"))
-    widget.bind("<Control-с>", lambda e: widget.event_generate("<<Copy>>"))
-    widget.bind("<Control-С>", lambda e: widget.event_generate("<<Copy>>"))
 
 config = load_config()
 
