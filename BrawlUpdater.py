@@ -103,6 +103,18 @@ class BrawlUpdaterApp(ctk.CTk):
         # Заголовок
         self.title_label = ctk.CTkLabel(self, text="⚡ BRAWL STARS SYNC", font=ctk.CTkFont(size=24, weight="bold"), text_color="#00e5ff")
         self.title_label.pack(pady=(20, 10))
+        
+        # Контекстное меню для вставки мышкой
+        import tkinter as tk
+        self.context_menu = tk.Menu(self, tearoff=0)
+        self.context_menu.add_command(label="Копировать", command=self.copy_text)
+        self.context_menu.add_command(label="Вставить", command=self.paste_text)
+        self.context_menu.add_command(label="Вырезать", command=self.cut_text)
+        self.current_widget = None
+
+        def show_menu(event):
+            self.current_widget = event.widget
+            self.context_menu.tk_popup(event.x_root, event.y_root)
 
         # Выбор клуба
         self.club_label = ctk.CTkLabel(self, text="Выберите Клуб:", font=ctk.CTkFont(size=14, weight="bold"))
@@ -116,18 +128,21 @@ class BrawlUpdaterApp(ctk.CTk):
         self.api_label.pack(anchor="w", padx=30, pady=(10, 0))
         self.entry_api_key = ctk.CTkEntry(self, width=540, placeholder_text="Введите API ключ...")
         self.entry_api_key.pack(padx=30, pady=(5, 10))
+        self.entry_api_key.bind("<Button-3>", show_menu)
 
         # Firebase Email
         self.email_label = ctk.CTkLabel(self, text="2. Email админа Firebase:", font=ctk.CTkFont(size=14, weight="bold"))
         self.email_label.pack(anchor="w", padx=30, pady=(10, 0))
         self.entry_fb_email = ctk.CTkEntry(self, width=540, placeholder_text="admin@brawl.com")
         self.entry_fb_email.pack(padx=30, pady=(5, 10))
+        self.entry_fb_email.bind("<Button-3>", show_menu)
 
         # Firebase Password
         self.pass_label = ctk.CTkLabel(self, text="3. Пароль админа Firebase:", font=ctk.CTkFont(size=14, weight="bold"))
         self.pass_label.pack(anchor="w", padx=30, pady=(10, 0))
         self.entry_fb_pass = ctk.CTkEntry(self, width=540, show="*", placeholder_text="Пароль")
         self.entry_fb_pass.pack(padx=30, pady=(5, 10))
+        self.entry_fb_pass.bind("<Button-3>", show_menu)
 
         # Инфо поля (только для чтения)
         self.tag_label = ctk.CTkLabel(self, text="Тег Клуба:", font=ctk.CTkFont(size=12), text_color="gray")
@@ -147,6 +162,21 @@ class BrawlUpdaterApp(ctk.CTk):
         # Применяем данные первого клуба
         self.combo_club.set(list(CLUBS.keys())[0])
         self.on_club_change(list(CLUBS.keys())[0])
+
+    def copy_text(self):
+        if self.current_widget:
+            try: self.current_widget.event_generate("<<Copy>>")
+            except: pass
+            
+    def paste_text(self):
+        if self.current_widget:
+            try: self.current_widget.event_generate("<<Paste>>")
+            except: pass
+            
+    def cut_text(self):
+        if self.current_widget:
+            try: self.current_widget.event_generate("<<Cut>>")
+            except: pass
 
     def on_club_change(self, selected_club):
         # Сохраняем текущие введенные данные в config перед сменой
