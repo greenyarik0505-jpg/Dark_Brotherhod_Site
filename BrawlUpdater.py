@@ -129,10 +129,27 @@ def on_update_click():
     finally:
         btn_update.config(state=tk.NORMAL, text="🔄 Обновить кубки")
 
+# UI Setup
 app = tk.Tk()
 app.title("Brawl Stars Auto Updater - Multi Club")
 app.geometry("550x380")
 app.configure(padx=20, pady=20)
+
+def make_context_menu(widget):
+    menu = tk.Menu(widget, tearoff=0)
+    menu.add_command(label="Копировать (Ctrl+C)", command=lambda: widget.event_generate("<<Copy>>"))
+    menu.add_command(label="Вставить (Ctrl+V)", command=lambda: widget.event_generate("<<Paste>>"))
+    menu.add_command(label="Вырезать (Ctrl+X)", command=lambda: widget.event_generate("<<Cut>>"))
+    
+    def show_menu(event):
+        menu.tk_popup(event.x_root, event.y_root)
+        
+    widget.bind("<Button-3>", show_menu)
+    # Fix for Russian layout Ctrl+V / Ctrl+C
+    widget.bind("<Control-м>", lambda e: widget.event_generate("<<Paste>>"))
+    widget.bind("<Control-М>", lambda e: widget.event_generate("<<Paste>>"))
+    widget.bind("<Control-с>", lambda e: widget.event_generate("<<Copy>>"))
+    widget.bind("<Control-С>", lambda e: widget.event_generate("<<Copy>>"))
 
 config = load_config()
 
@@ -140,6 +157,7 @@ tk.Label(app, text="Brawl Stars API Key (из developer.brawlstars.com):", font=
 entry_api_key = tk.Entry(app, width=80)
 entry_api_key.pack(pady=5)
 entry_api_key.insert(0, config.get("api_key", ""))
+make_context_menu(entry_api_key)
 
 tk.Label(app, text="Выберите Клуб для обновления:", font=("Arial", 10, "bold")).pack(anchor="w", pady=(15, 0))
 combo_club = ttk.Combobox(app, values=list(CLUBS.keys()), width=77, state="readonly")
@@ -150,10 +168,12 @@ combo_club.current(0)
 tk.Label(app, text="Тег Клуба:", font=("Arial", 10)).pack(anchor="w", pady=(10, 0))
 entry_club_tag = tk.Entry(app, width=80)
 entry_club_tag.pack(pady=2)
+make_context_menu(entry_club_tag)
 
 tk.Label(app, text="База Firebase:", font=("Arial", 10)).pack(anchor="w", pady=(5, 0))
 entry_firebase_url = tk.Entry(app, width=80)
 entry_firebase_url.pack(pady=2)
+make_context_menu(entry_firebase_url)
 
 on_club_change()
 
