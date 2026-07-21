@@ -116,31 +116,67 @@ def on_update_click():
         bs_members = get_brawl_stars_members(api_key, club_tag)
         fb_data = get_firebase_data(firebase_url)
         
-        if "members" not in fb_data:
-            raise Exception("В базе данных Firebase нет списка участников (members).")
-            
-        fb_members = fb_data["members"]
-        bs_map = {m["name"]: m for m in bs_members}
+        # Mapping API roles to Russian roles
+        role_map = {
+            "president": "Президент",
+            "vicePresident": "Вице-президент",
+            "senior": "Ветеран",
+            "member": "Участник"
+        }
         
+        fb_members = fb_data.get("members", [])
+        
+        # Map existing Firebase members by name to preserve avatars and IDs
+        old_fb_map = {m.get("name", ""): m for m in fb_members}
+        
+        new_fb_members = []
+        added_count = 0
         updated_count = 0
-        not_found_names = []
-        for fb_m in fb_members:
-            name = fb_m.get("name")
-            if name in bs_map:
-                bs_player = bs_map[name]
-                old_trophies = fb_m.get("trophies", 0)
-                new_trophies = bs_player.get("trophies", 0)
-                if old_trophies != new_trophies:
-                    fb_m["trophies"] = new_trophies
+        
+        import time
+        import random
+        
+        for i, bs_m in enumerate(bs_members):
+            name = bs_m.get("name", "Unknown")
+            new_trophies = bs_m.get("trophies", 0)
+            raw_role = bs_m.get("role", "member")
+            ru_role = role_map.get(raw_role, "Участник")
+            
+            if name in old_fb_map:
+                # Player exists, update trophies and role
+                old_m = old_fb_map[name]
+                if old_m.get("trophies") != new_trophies or old_m.get("role") != ru_role:
                     updated_count += 1
+                    
+                old_m["trophies"] = new_trophies
+                old_m["role"] = ru_role
+                new_fb_members.append(old_m)
+                # Remove from map so we know who is left
+                del old_fb_map[name]
             else:
-                not_found_names.append(name)
+                # New player!
+                added_count += 1
+                new_id = f"m_auto_{int(time.time())}_{i}_{random.randint(100,999)}"
+                new_fb_members.append({
+                    "id": new_id,
+                    "name": name,
+                    "role": ru_role,
+                    "trophies": new_trophies,
+                    "avatar": "👤"
+                })
+                
+        removed_count = len(old_fb_map)
+        
+        # Overwrite the members array
+        fb_data["members"] = new_fb_members
                 
         update_firebase_data(firebase_url, fb_data, id_token)
         
-        msg = f"Кубки успешно обновлены у {updated_count} участников клуба {selected_club}!"
-        if not_found_names:
-            msg += f"\n\nНе удалось найти {len(not_found_names)} игроков в официальном клане (возможно, изменён ник или их нет в клубе): {', '.join(not_found_names[:5])}" + ("..." if len(not_found_names)>5 else "")
+        msg = f"✅ Синхронизация клуба {selected_club} завершена!\n\n"
+        msg += f"• Обновлены кубки/роли у: {updated_count} чел.\n"
+        msg += f"• Добавлены новые игроки: {added_count} чел.\n"
+        msg += f"• Удалены (вышли из клуба): {removed_count} чел.\n\n"
+        msg += "Теперь сайт на 100% совпадает с игрой!"
             
         messagebox.showinfo("Успех!", msg)
         
