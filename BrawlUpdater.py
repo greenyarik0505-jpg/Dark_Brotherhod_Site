@@ -11,7 +11,7 @@ import random
 ctk.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
-CONFIG_FILE = "brawl_updater_config.json"
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "brawl_updater_config.json")
 
 CLUBS = {
     "Dark Brotherhood": {
