@@ -1,7 +1,7 @@
 // ============================================================
 // 🎮 Brawl Stars Club — Священная Империя | script.js
 // ============================================================
-const SITE_VERSION = "17";
+const SITE_VERSION = "18";
 console.log("%c🎮 Сайт загружен | Версия: " + SITE_VERSION, "color: #7a314b; font-size: 16px; font-weight: bold;");
 // Полнофункциональный скрипт для клубного сайта.
 // Содержит: управление состоянием, навигацию, анимации,
@@ -229,7 +229,7 @@ function applyTheme(theme, savePreference = false) {
 }
 
 function setupTheme() {
-    applyTheme(getPreferredTheme());
+    applyTheme("dark");
 
     const toggle = document.getElementById("themeToggle");
     if (toggle) {
