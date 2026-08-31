@@ -28,7 +28,7 @@
 > ⚠️ **КРИТИЧЕСКОЕ ПРАВИЛО: НЕ ОБЪЕДИНЯТЬ КЛУБЫ!**  
 > **«Священная Империя»** и **«Dark Brotherhood»** — это **два абсолютно разных, независимых клуба**!  
 > У каждого клуба:
-> 1. Свой отдельный репозиторий на GitHub и локальная папка.
+> 1. Свой отдельный репозиторий на GitHub и локальная папка (`Holy_Empire` и `Dark_Brotherhood`).
 > 2. Своя отдельная база данных Firebase (`brawlclub-432dd` vs `dark-club-57e07`).
 > 3. Свой собственный домен (`holy-empire-club.eu.cc` vs `dark-brotherhood.eu.cc`).
 > 4. Свои администраторы, пароли, правила и состав участников.
@@ -38,7 +38,7 @@
 
 | Параметр | Клуб 1: Священная Империя (Holy Empire) | Клуб 2: Dark Brotherhood |
 | :--- | :--- | :--- |
-| **Локальная папка** | `D:\Brawl_Stars_Club_Site` | `D:\Dark_Brotherhod_Site` |
+| **Локальная папка** | `D:\Brawl_Stars_Clubs\Holy_Empire` | `D:\Brawl_Stars_Clubs\Dark_Brotherhood` |
 | **GitHub Репозиторий** | [github.com/greenyarik0505-jpg/Brawl_Stars_Club_Site](https://github.com/greenyarik0505-jpg/Brawl_Stars_Club_Site) | [github.com/greenyarik0505-jpg/Dark_Brotherhod_Site](https://github.com/greenyarik0505-jpg/Dark_Brotherhod_Site) |
 | **Ветка деплоя** | `main` | `master` |
 | **Основной домен** | `https://holy-empire-club.eu.cc` | `https://dark-brotherhood.eu.cc` |
@@ -58,17 +58,17 @@
 
 ### 3.1. Как пушить изменения в репозиторий через консоль:
 
-#### Для Священной Империи (`D:\Brawl_Stars_Club_Site`):
+#### Для Священной Империи (`D:\Brawl_Stars_Clubs\Holy_Empire`):
 ```powershell
-cd D:\Brawl_Stars_Club_Site
+cd D:\Brawl_Stars_Clubs\Holy_Empire
 git add .
 git commit -m "feat: описание изменений"
 git push origin main
 ```
 
-#### Для Dark Brotherhood (`D:\Dark_Brotherhod_Site`):
+#### Для Dark Brotherhood (`D:\Brawl_Stars_Clubs\Dark_Brotherhood`):
 ```powershell
-cd D:\Dark_Brotherhod_Site
+cd D:\Brawl_Stars_Clubs\Dark_Brotherhood
 git add .
 git commit -m "feat: описание изменений"
 git push origin master
@@ -168,14 +168,14 @@ gh api -X PUT /repos/greenyarik0505-jpg/Dark_Brotherhod_Site/pages -f cname="dar
 
 ## ⚡ 6. VIP Синхронизатор Кубков (`BrawlUpdater.py`)
 
-Находится в папке `D:\Dark_Brotherhod_Site\BrawlUpdater.py`.  
-Запускается через Python или созданный `.bat` файл.
+Находится в папке `D:\Brawl_Stars_Clubs\Dark_Brotherhood\BrawlUpdater.py`.  
+Запускается через Python или созданный `.bat` файл на рабочем столе.
 
 Пример содержимого `.bat` файла:
 ```bat
 @echo off
-cd /d "D:\Dark_Brotherhod_Site"
-start "" pythonw "D:\Dark_Brotherhod_Site\BrawlUpdater.py"
+cd /d "D:\Brawl_Stars_Clubs\Dark_Brotherhood"
+start "" pythonw "D:\Brawl_Stars_Clubs\Dark_Brotherhood\BrawlUpdater.py"
 ```
 
 ### Как работает утилита:
@@ -193,32 +193,29 @@ start "" pythonw "D:\Dark_Brotherhod_Site\BrawlUpdater.py"
 
 ## 📁 7. Локальные Пути и Структура Файлов на Диске
 
-### 7.1. Клуб 1: Священная Империя (Holy Empire)
-📂 **Папка проекта:** `D:\Brawl_Stars_Club_Site\`
 ```text
-D:\Brawl_Stars_Club_Site\
-├── index.html                  # Главная страница (табы, модалки, правила, заявки)
-├── style.css                   # Оформление (неон, стекло, адаптив под смартфоны)
-├── script.js                   # Основной JS движок (Firebase RTDB + Auth, админка)
-├── presentation.html           # Интерактивная презентация (Reveal.js)
-├── CNAME                       # Домен (holy-empire-club.eu.cc)
-├── README.md                   # Краткое описание репозитория
-└── AGENTS.md                   # Полное руководство по проекту для ИИ
-```
-
-### 7.2. Клуб 2: Dark Brotherhood
-📂 **Папка проекта:** `D:\Dark_Brotherhod_Site\`
-```text
-D:\Dark_Brotherhod_Site\
-├── index.html                  # Главная страница клуба Dark Brotherhood
-├── style.css                   # Оформление и стили
-├── script.js                   # JS движок под базу dark-club-57e07
-├── presentation.html           # Интерактивная презентация Dark Brotherhood
-├── CNAME                       # Домен (dark-brotherhood.eu.cc)
-├── BrawlUpdater.py             # Главный скрипт VIP-автообновления кубков (Python)
-├── brawl_updater_config.json   # Сохранённые ключи и пароли админов для обоих клубов
-├── README.md                   # Краткое описание репозитория
-└── AGENTS.md                   # Полное руководство по проекту для ИИ
+📁 Главная папка проектов: D:\Brawl_Stars_Clubs\
+├── AGENTS.md                   # Главное руководство по проекту для ИИ и разработчиков
+│
+├── 📂 Holy_Empire\             # Клуб 1: Священная Империя (Holy Empire)
+│   ├── index.html              # Главная страница (табы, модалки, правила, заявки)
+│   ├── style.css               # Оформление (неон, стекло, адаптив под смартфоны)
+│   ├── script.js               # Основной JS движок (Firebase RTDB + Auth, админка)
+│   ├── presentation.html       # Интерактивная презентация (Reveal.js)
+│   ├── CNAME                   # Домен (holy-empire-club.eu.cc)
+│   ├── README.md               # Краткое описание репозитория
+│   └── AGENTS.md               # Руководство для ИИ
+│
+└── 📂 Dark_Brotherhood\        # Клуб 2: Dark Brotherhood
+    ├── index.html              # Главная страница клуба Dark Brotherhood
+    ├── style.css               # Оформление и стили
+    ├── script.js               # JS движок под базу dark-club-57e07
+    ├── presentation.html       # Интерактивная презентация Dark Brotherhood
+    ├── CNAME                   # Домен (dark-brotherhood.eu.cc)
+    ├── BrawlUpdater.py         # Главный скрипт VIP-автообновления кубков (Python)
+    ├── brawl_updater_config.json # Сохранённые ключи и пароли админов для обоих клубов
+    ├── README.md               # Краткое описание репозитория
+    └── AGENTS.md               # Руководство для ИИ
 ```
 
 ---
