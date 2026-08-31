@@ -243,36 +243,51 @@ class BrawlUpdaterApp(ctk.CTk):
             bs_members = get_brawl_stars_members(api_key, club_tag)
             fb_data = get_firebase_data(firebase_url)
             
-            role_map = {
-                "president": "Президент",
-                "vicePresident": "Вице-президент",
-                "senior": "Ветеран",
-                "member": "Участник"
-            }
+            def parse_role(raw):
+                r = str(raw).lower().strip()
+                if "pres" in r and "vice" not in r:
+                    return "Президент", "👑"
+                elif "vice" in r:
+                    return "Вице-президент", "🛡️"
+                elif "senior" in r or "vet" in r:
+                    return "Ветеран", "⭐"
+                else:
+                    return "Участник", "🎮"
             
             fb_members = fb_data.get("members", [])
             old_fb_map = {m.get("name", ""): m for m in fb_members}
             
             new_fb_members = []
             added_count = 0
-            updated_count = 0
+            trophies_updated = 0
+            roles_changed = 0
+            default_avatars = {"👑", "🛡️", "⭐", "🎮", "👤"}
             
             for i, bs_m in enumerate(bs_members):
                 name = bs_m.get("name", "Unknown")
                 new_trophies = bs_m.get("trophies", 0)
                 raw_role = bs_m.get("role", "member")
-                ru_role = role_map.get(raw_role, "Участник")
+                ru_role, role_avatar = parse_role(raw_role)
                 
                 if name in old_fb_map:
                     old_m = old_fb_map[name]
-                    if old_m.get("trophies") != new_trophies or old_m.get("role") != ru_role:
-                        updated_count += 1
+                    # Проверяем изменение кубков
+                    if old_m.get("trophies") != new_trophies:
+                        trophies_updated += 1
+                        old_m["trophies"] = new_trophies
                         
-                    old_m["trophies"] = new_trophies
-                    old_m["role"] = ru_role
+                    # Проверяем изменение ранга / роли (ветеран, вице и т.д.)
+                    if old_m.get("role") != ru_role:
+                        roles_changed += 1
+                        old_m["role"] = ru_role
+                        # Если аватар стандартный, обновляем его под новый ранг
+                        if old_m.get("avatar") in default_avatars:
+                            old_m["avatar"] = role_avatar
+                            
                     new_fb_members.append(old_m)
                     del old_fb_map[name]
                 else:
+                    # Новый игрок
                     added_count += 1
                     new_id = f"m_auto_{int(time.time())}_{i}_{random.randint(100,999)}"
                     new_fb_members.append({
@@ -280,7 +295,7 @@ class BrawlUpdaterApp(ctk.CTk):
                         "name": name,
                         "role": ru_role,
                         "trophies": new_trophies,
-                        "avatar": "👤"
+                        "avatar": role_avatar
                     })
                     
             removed_count = len(old_fb_map)
@@ -289,10 +304,11 @@ class BrawlUpdaterApp(ctk.CTk):
             update_firebase_data(firebase_url, fb_data, id_token)
             
             msg = f"✅ Синхронизация клуба {selected_club} завершена!\n\n"
-            msg += f"• Обновлены кубки/роли у: {updated_count} чел.\n"
-            msg += f"• Добавлены новые игроки: {added_count} чел.\n"
-            msg += f"• Удалены (вышли из клуба): {removed_count} чел.\n\n"
-            msg += "Теперь сайт на 100% совпадает с игрой!"
+            msg += f"• 🏆 Кубки обновлены у: {trophies_updated} игроков\n"
+            msg += f"• ⚔️ Ранги/роли (Ветеран/Вице и др.) обновлены у: {roles_changed} игроков\n"
+            msg += f"• ➕ Добавлены новые игроки: {added_count} чел.\n"
+            msg += f"• ➖ Удалены (вышли из клуба): {removed_count} чел.\n\n"
+            msg += "Теперь кубки, ранги и состав на сайте на 100% совпадают с игрой!"
                 
             messagebox.showinfo("Успех!", msg)
             
