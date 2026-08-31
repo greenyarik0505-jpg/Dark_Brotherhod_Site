@@ -1,7 +1,7 @@
 // ============================================================
 // 🎮 Brawl Stars Club — Священная Империя | script.js
 // ============================================================
-const SITE_VERSION = "15";
+const SITE_VERSION = "17";
 console.log("%c🎮 Сайт загружен | Версия: " + SITE_VERSION, "color: #7a314b; font-size: 16px; font-weight: bold;");
 // Полнофункциональный скрипт для клубного сайта.
 // Содержит: управление состоянием, навигацию, анимации,
@@ -498,6 +498,16 @@ function setupScrollReveal() {
     const revealElements = document.querySelectorAll(".reveal");
     if (!revealElements.length) return;
 
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    revealElements.forEach((el, index) => {
+        el.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 55}ms`);
+    });
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealElements.forEach((el) => el.classList.add("reveal-active"));
+        return;
+    }
+
     if (!globalRevealObserver) {
         globalRevealObserver = new IntersectionObserver(
             (entries) => {
@@ -508,7 +518,7 @@ function setupScrollReveal() {
                     }
                 });
             },
-            { threshold: 0.05 }
+            { threshold: 0.08, rootMargin: "0px 0px -6% 0px" }
         );
     }
 

@@ -2777,3 +2777,70 @@ html,body{font-family:"Manrope","Montserrat",sans-serif;background:var(--bg-prim
 .btn, button { box-shadow:none !important; }
 .btn::before, .btn::after, button::before, button::after { display:none !important; }
 .btn:hover, button:hover { box-shadow:none !important; }
+
+/* v16 — cinematic motion layer; uses backgrounds and transforms only, never button pseudo-elements. */
+html { scroll-behavior:smooth; }
+body { transition:background-color .42s ease,color .32s ease; }
+.header,.footer,.modal-content,.toast { transition:background-color .35s ease,border-color .35s ease,color .3s ease; }
+
+.hero-banner { background-size:112% 112%; animation:hero-light-shift 18s ease-in-out infinite alternate; }
+.hero-content > * { opacity:0; animation:hero-enter .72s cubic-bezier(.22,1,.36,1) forwards; }
+.hero-content::before { animation-delay:.08s; }
+.hero-content .hero-title { animation-delay:.16s; }
+.hero-content .hero-subtitle { animation-delay:.29s; }
+.hero-content .hero-actions { animation-delay:.42s; }
+
+.reveal { opacity:0; transform:translate3d(0,24px,0) scale(.985); filter:blur(2px); transition:opacity .56s ease,transform .62s cubic-bezier(.22,1,.36,1),filter .42s ease; transition-delay:var(--reveal-delay,0ms); }
+.reveal.reveal-active { opacity:1; transform:translate3d(0,0,0) scale(1); filter:blur(0); }
+.tab-content.active { animation:tab-arrive .38s cubic-bezier(.22,1,.36,1) both; }
+
+.btn { transition:transform .2s cubic-bezier(.22,1,.36,1),background-position .58s ease,border-color .22s ease,color .22s ease !important; }
+.btn-primary { background-color:var(--club-accent-strong) !important; background-image:linear-gradient(110deg,var(--club-accent-strong) 0%,var(--club-accent-strong) 38%,color-mix(in srgb,#fff 38%,var(--club-accent-strong)) 50%,var(--club-accent-strong) 62%,var(--club-accent-strong) 100%) !important; background-size:230% 100% !important; background-position:100% 0 !important; }
+.btn-primary:hover { background-position:0 0 !important; transform:translateY(-2px) !important; }
+.btn-secondary,.btn-danger,.btn-edit,.btn-delete { background-size:190% 100%; background-position:100% 0; transition:transform .2s cubic-bezier(.22,1,.36,1),background-position .48s ease,border-color .22s ease,color .22s ease !important; }
+.btn-secondary:hover,.btn-danger:hover,.btn-edit:hover,.btn-delete:hover { background-position:0 0; transform:translateY(-2px) !important; }
+.btn:active { transform:translateY(1px) scale(.982) !important; transition-duration:.08s !important; }
+.btn:focus-visible,.theme-toggle:focus-visible,.nav-link:focus-visible { outline:3px solid color-mix(in srgb,var(--club-accent-strong) 60%,transparent); outline-offset:3px; }
+
+.nav-link { transition:transform .2s cubic-bezier(.22,1,.36,1),color .2s ease,background-color .2s ease,border-color .2s ease !important; }
+.nav-link:hover { transform:translateY(-2px) !important; }
+.theme-toggle { transition:transform .35s cubic-bezier(.22,1,.36,1),background-color .25s ease,border-color .25s ease !important; }
+.theme-toggle:hover { transform:translateY(-2px) rotate(14deg) !important; }
+
+.card,.intro-card,.club-info-card,.calendar-card,.rules-card,.join-card,.admin-dashboard-card,.stat-card,.news-card,.member-card,.role-feature-card,.achievement-card,.gallery-item { transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .25s ease,background-color .3s ease !important; }
+.gallery-item { overflow:hidden; }
+.gallery-item img { transition:transform .7s cubic-bezier(.22,1,.36,1),filter .4s ease !important; }
+.gallery-item:hover img { transform:scale(1.075) !important; filter:saturate(1.06) contrast(1.02); }
+.gallery-overlay { transition:opacity .3s ease,transform .32s cubic-bezier(.22,1,.36,1) !important; }
+.gallery-item:hover .gallery-overlay { transform:translateY(0); }
+.stat-card::after { animation:stat-ambient 7s ease-in-out infinite; }
+.timeline-dot { animation:timeline-breathe 4.8s ease-in-out infinite !important; }
+
+@keyframes hero-light-shift { from { background-position:0% 50%; } to { background-position:100% 50%; } }
+@keyframes hero-enter { from { opacity:0; transform:translate3d(0,20px,0); } to { opacity:1; transform:translate3d(0,0,0); } }
+@keyframes tab-arrive { from { opacity:.01; transform:translate3d(0,10px,0); } to { opacity:1; transform:translate3d(0,0,0); } }
+@keyframes stat-ambient { 0%,100% { transform:translate3d(0,0,0) scale(1); opacity:.72; } 50% { transform:translate3d(-8px,-10px,0) scale(1.1); opacity:1; } }
+@keyframes timeline-breathe { 0%,100% { transform:scale(1); filter:saturate(1); } 50% { transform:scale(1.12); filter:saturate(1.2); } }
+
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .hero-banner,.hero-content > *,.tab-content.active,.stat-card::after,.timeline-dot { animation:none !important; }
+  .reveal,.reveal.reveal-active { opacity:1; transform:none; filter:none; transition:none !important; }
+  .btn,.nav-link,.theme-toggle,.card,.intro-card,.club-info-card,.calendar-card,.rules-card,.join-card,.admin-dashboard-card,.stat-card,.news-card,.member-card,.role-feature-card,.achievement-card,.gallery-item,.gallery-item img,.gallery-overlay { transition:none !important; }
+}
+
+/* v16.1 — restore only approved motion after the legacy global animation reset. */
+@media (prefers-reduced-motion:no-preference) {
+  body[data-club="dark"] .hero-banner { animation:dark-hero-drift 16s cubic-bezier(.45,.05,.55,.95) infinite alternate !important; }
+  body[data-club="dark"] .hero-content > * { animation:dark-hero-enter .68s cubic-bezier(.22,1,.36,1) forwards !important; }
+  body[data-club="dark"] .hero-content::before { animation-delay:.06s !important; }
+  body[data-club="dark"] .hero-content .hero-title { animation-delay:.14s !important; }
+  body[data-club="dark"] .hero-content .hero-subtitle { animation-delay:.27s !important; }
+  body[data-club="dark"] .hero-content .hero-actions { animation-delay:.4s !important; }
+  body[data-club="dark"] .stat-card::after { animation:dark-stat-ambient 6.6s ease-in-out infinite !important; }
+  body[data-club="dark"] .timeline-dot { animation:dark-timeline-breathe 4.7s ease-in-out infinite !important; }
+}
+@keyframes dark-hero-drift { from { background-position:8% 52%; } to { background-position:94% 44%; } }
+@keyframes dark-hero-enter { from { opacity:0; transform:translate3d(-18px,18px,0); } 70% { opacity:1; } to { opacity:1; transform:translate3d(0,0,0); } }
+@keyframes dark-stat-ambient { 0%,100% { transform:translate3d(0,0,0) scale(1); opacity:.66; } 50% { transform:translate3d(10px,-7px,0) scale(1.1); opacity:1; } }
+@keyframes dark-timeline-breathe { 0%,100% { transform:scale(1); filter:saturate(1); } 50% { transform:scale(1.11); filter:saturate(1.24); } }
