@@ -2866,3 +2866,15 @@ body::before{background-image:none!important}
 .join-info-grid>.join-info-box{flex:1 1 calc(50% - .375rem)!important;min-width:0!important}
 .join-info-grid>.join-info-box:nth-child(3){flex:0 1 430px!important;width:100%!important;max-width:430px!important;margin-inline:auto!important;text-align:center!important}
 @media(max-width:640px){.join-info-grid>.join-info-box,.join-info-grid>.join-info-box:nth-child(3){flex:1 1 100%!important;max-width:none!important}}
+/* v21: definitive single-column join layout and removal of all top dividers. */
+html,body,.main-content,.content-section,#join-section,.header,.header.scrolled{border-top:0!important;border-bottom:0!important;outline:0!important;box-shadow:none!important}
+.join-container{width:100%!important;max-width:760px!important;margin-inline:auto!important}
+.join-card{width:100%!important;max-width:680px!important;margin-inline:auto!important}
+.join-info-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:min(100%,500px)!important;margin:1.5rem auto!important;gap:.7rem!important}
+.join-info-grid>.join-info-box,.join-info-grid>.join-info-box:nth-child(3){grid-column:auto!important;display:flex!important;flex-direction:column!important;justify-content:center!important;width:100%!important;max-width:none!important;min-height:104px!important;margin:0!important;text-align:center!important}
+/* v19/v22: tactile card hover for desktop pointers. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .card,.intro-card,.club-info-card,.calendar-card,.rules-card,.join-card,.admin-dashboard-card,.stat-card,.news-card,.member-card,.role-feature-card,.achievement-card,.gallery-item{will-change:transform;cursor:default}
+  .card:hover,.intro-card:hover,.club-info-card:hover,.calendar-card:hover,.rules-card:hover,.join-card:hover,.admin-dashboard-card:hover,.stat-card:hover,.news-card:hover,.member-card:hover,.role-feature-card:hover,.achievement-card:hover,.gallery-item:hover{animation:card-pop .34s cubic-bezier(.22,1,.36,1) both!important}
+  @keyframes card-pop{0%{transform:translateY(-2px) scale(1)}58%{transform:translateY(-7px) scale(1.018)}100%{transform:translateY(-5px) scale(1.01)}}
+}
