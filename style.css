@@ -2767,3 +2767,8 @@ html,body{font-family:"Manrope","Montserrat",sans-serif;background:var(--bg-prim
 .join-container{max-width:980px}.join-card{overflow:hidden;border-radius:24px;border-color:color-mix(in srgb,var(--club-accent-strong) 48%,var(--border-color));background-image:radial-gradient(circle at 90% 10%,var(--club-halo),transparent 36%),linear-gradient(135deg,color-mix(in srgb,var(--club-wash) 52%,var(--bg-card)),var(--bg-card))!important}.join-card::before{display:block!important;inset:auto -10% -65% auto;width:360px;height:360px;border-radius:50%;opacity:.42;border:1px solid var(--club-accent-strong);box-shadow:0 0 0 36px var(--club-wash),0 0 0 72px color-mix(in srgb,var(--club-wash) 42%,transparent);background:none!important}.join-info-grid{gap:.75rem}.join-info-box{border-radius:12px;background:color-mix(in srgb,var(--bg-card) 76%,transparent)}.join-notice{background:color-mix(in srgb,var(--bg-card) 65%,transparent);border-left:3px solid var(--club-accent)}
 @media(min-width:900px){.news-list .news-card:first-child{grid-column:span 2;min-height:208px}.news-list .news-card:first-child h4{font-size:1.22rem}.role-features{display:grid;grid-template-columns:repeat(4,1fr)}.join-card{padding:clamp(2rem,5vw,4rem)}}
 @media(max-width:768px){.stat-card:nth-child(even){margin-top:0}.news-card{min-height:0}.calendar-card,.rules-card,.join-card{border-radius:18px}.timeline-content{padding:.9rem}.rule-item:hover{transform:none}}
+
+/* Fix: prevent the primary-button decorative layer from rendering as a dark line. */
+.btn-primary::after { display:none !important; }
+.btn-primary { box-shadow:none !important; }
+.btn-primary:hover { box-shadow:0 10px 20px var(--club-halo) !important; }
