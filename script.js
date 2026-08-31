@@ -1,8 +1,8 @@
-﻿// ============================================================
+// ============================================================
 // 🎮 Brawl Stars Club — Священная Империя | script.js
 // ============================================================
-const SITE_VERSION = "9";
-console.log("%c🎮 Сайт загружен | Версия: " + SITE_VERSION, "color: #00e5ff; font-size: 16px; font-weight: bold;");
+const SITE_VERSION = "12";
+console.log("%c🎮 Сайт загружен | Версия: " + SITE_VERSION, "color: #7a314b; font-size: 16px; font-weight: bold;");
 // Полнофункциональный скрипт для клубного сайта.
 // Содержит: управление состоянием, навигацию, анимации,
 // админ-панель с CRUD для новостей/участников/событий,
@@ -36,6 +36,7 @@ function getAdminSecretCode() {
 
 /** Ключ для хранения данных в LocalStorage */
 const STORAGE_KEY = "brawlClubData";
+const THEME_STORAGE_KEY = "brawlClubTheme";
 
 /** Данные клуба по умолчанию */
 const DEFAULT_CLUB_DATA = {
@@ -190,6 +191,53 @@ function saveState() {
  */
 function deepClone(obj) {
     return JSON.parse(JSON.stringify(obj));
+}
+
+// ============================================================
+//  ТЕМА И ДОСТУПНОСТЬ
+// ============================================================
+
+function getPreferredTheme() {
+    try {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+        if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
+    } catch (e) { /* LocalStorage может быть недоступен в приватном режиме. */ }
+
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+}
+
+function applyTheme(theme, savePreference = false) {
+    const nextTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.style.colorScheme = nextTheme;
+    document.body.dataset.theme = nextTheme;
+
+    const toggle = document.getElementById("themeToggle");
+    if (toggle) {
+        const isDark = nextTheme === "dark";
+        toggle.querySelector("span").textContent = isDark ? "☀" : "◐";
+        toggle.setAttribute("aria-label", isDark ? "Переключить на светлую тему" : "Переключить на тёмную тему");
+        toggle.setAttribute("title", isDark ? "Светлая тема" : "Тёмная тема");
+        toggle.setAttribute("aria-pressed", String(isDark));
+    }
+
+    if (savePreference) {
+        try { localStorage.setItem(THEME_STORAGE_KEY, nextTheme); } catch (e) {}
+    }
+}
+
+function setupTheme() {
+    applyTheme(getPreferredTheme());
+
+    const toggle = document.getElementById("themeToggle");
+    if (toggle) {
+        toggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+            applyTheme(currentTheme === "dark" ? "light" : "dark", true);
+        });
+    }
 }
 
 
@@ -2184,6 +2232,8 @@ window.openLightbox = function (id) {
  * Главная точка входа — инициализация всего приложения
  */
 function initApp() {
+    setupTheme();
+
     // Загрузка данных
     loadState();
 

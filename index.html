@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
-<body>
+<body data-club="dark">
 
     <!-- ============================================================ -->
     <!-- HEADER -->
@@ -34,6 +34,10 @@
                 </ul>
             </nav>
 
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить на тёмную тему" title="Переключить тему">
+                <span aria-hidden="true">◐</span>
+            </button>
+
             <button class="nav-toggle" id="navToggle" aria-label="Меню">
                 <span></span>
                 <span></span>
@@ -46,11 +50,7 @@
     <!-- HERO BANNER -->
     <!-- ============================================================ -->
     <section class="hero-banner">
-        <div class="hero-glow"></div>
-        <div class="hero-particles" id="heroParticles"></div>
-
         <div class="hero-content">
-            <div class="hero-badge">⚔️ BRAWL STARS CLUB</div>
             <h1 class="hero-title">Добро пожаловать,<br>в Dark Brotherhood, путник!</h1>
             <p class="hero-subtitle">Мы — сплочённая команда, которая играет ради удовольствия и побед. Регулярно участвуем в Мегакопилке и Клубной лиге.</p>
             <div class="hero-actions">
@@ -676,6 +676,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
     
     <script src="./config.js" onerror="console.warn('config.js dynamic load skipped (will use default or environment provided secrets).')"></script>
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=12"></script>
 </body>
 </html>
