@@ -2772,3 +2772,8 @@ html,body{font-family:"Manrope","Montserrat",sans-serif;background:var(--bg-prim
 .btn-primary::after { display:none !important; }
 .btn-primary { box-shadow:none !important; }
 .btn-primary:hover { box-shadow:0 10px 20px var(--club-halo) !important; }
+
+/* Fix: remove the unintended line/shadow beneath every button. */
+.btn, button { box-shadow:none !important; }
+.btn::before, .btn::after, button::before, button::after { display:none !important; }
+.btn:hover, button:hover { box-shadow:none !important; }
