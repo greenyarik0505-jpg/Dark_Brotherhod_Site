@@ -2878,3 +2878,8 @@ html,body,.main-content,.content-section,#join-section,.header,.header.scrolled{
   .card:hover,.intro-card:hover,.club-info-card:hover,.calendar-card:hover,.rules-card:hover,.join-card:hover,.admin-dashboard-card:hover,.stat-card:hover,.news-card:hover,.member-card:hover,.role-feature-card:hover,.achievement-card:hover,.gallery-item:hover{animation:card-pop .34s cubic-bezier(.22,1,.36,1) both!important}
   @keyframes card-pop{0%{transform:translateY(-2px) scale(1)}58%{transform:translateY(-7px) scale(1.018)}100%{transform:translateY(-5px) scale(1.01)}}
 }
+/* Clean navigation: remove legacy underlines and double active outlines. */
+.nav-link::before,.nav-link::after{display:none!important;content:none!important}
+.nav-link,.nav-link.active,.nav-link:focus,.nav-link:focus-visible{border:0!important;outline:0!important;box-shadow:none!important}
+.nav-link.active{background:color-mix(in srgb,var(--club-halo, var(--accent-purple)) 42%,var(--bg-card))!important;color:var(--text-main)!important}
+.nav-link:hover{background:color-mix(in srgb,var(--bg-card) 78%,transparent)!important}
